@@ -7,6 +7,7 @@ class bisection:
         self.b = end
         self.itr = iterations
         self.err = error
+        self.res = []
         self.parse()
     
     def f(self,a):
@@ -18,13 +19,33 @@ class bisection:
         fm = self.f(m)
         fa = self.f(a)
         fb = self.f(b)
+        error =0
+        anew = 0
+        bnew =0
         #print(fa,fb,fm)
-        if(fa == 0): return (a,b,a,a,0)
-        if(fb == 0): return (a,b,b,b, 0)
-        if(fm == 0): return (a,b,m,m, 0)
-        if(fa*fm<0): return(a,b,a,m, abs((a-m)/2))
-        if(fb*fm<0): return (a,b,m,b, abs((b-m)/2))
+        if(fa == 0):
+            anew = a
+            bnew = a
+        elif(fb == 0):
+            anew = b
+            bnew = b
+        elif(fm == 0):
+            anew = m
+            bnew = m
+        elif(fa*fm<0):
+            anew = a
+            bnew = m
+            error = abs((a-m)/2)
+        elif(fb*fm<0):
+            anew = m
+            bnew = b
+            error = abs((b-m)/2)
         else: return 1
+        dic = {
+            "a":a, "b":b, "anew": anew, "bnew": bnew, "error": error
+        }
+        return dic
+        
         
 
     def parse(self):
@@ -38,19 +59,12 @@ class bisection:
             if(type(c)==int):
                 print("invalid Interval...")
                 break
-            err = c[4]
-            a = c[2]
-            b = c[3]
+            err = c["error"]
+            a = c["anew"]
+            b = c["bnew"]
             i+=1
             lis.append(c)
-            print(c)
-        return lis
-
-s = "600*x**4-550*x**3+200*x**2-20*x-1"
-start = 0.1
-end = 1
-iterations = 20
-error = 0.05/100
-fal = bisection(s,start,end,iterations,error)
+            #print(c)
+        self.res=lis
 
 

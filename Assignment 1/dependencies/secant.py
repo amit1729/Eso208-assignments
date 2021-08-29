@@ -7,6 +7,7 @@ class secant:
         self.b = end
         self.itr = iterations
         self.err = error
+        self.res = []
         self.parse()
     
     def f(self,a):
@@ -39,13 +40,7 @@ class secant:
             a = c["xk"]
             b = c["xk+1"]
             lis.append(c)
-            print(c)
+            #print(c)
             i+=1
-        return lis
+        self.res = lis
 
-s = "exp(-x)-x"
-start = 0.1
-end = 1
-iterations = 20
-error = 0.05/100
-fal = secant(s,start,end,iterations,error)

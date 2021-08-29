@@ -6,6 +6,7 @@ class newton_raphson:
         self.a = start
         self.itr = iterations
         self.err = error
+        self.res = []
         self.parse()
     
     def f(self,a):
@@ -25,7 +26,7 @@ class newton_raphson:
         dic["ai"] = a
         dic["ai+1"] = anew
         dic["fdash"] = fda
-        dic["fai"] = fda
+        dic["fai"] = fa
         dic["error"] = abs((anew-a)/anew)
         return dic
         
@@ -41,12 +42,6 @@ class newton_raphson:
             a = dic["ai+1"]
             lis.append(dic)
             i=i+1
-            print(dic["ai"]," ",dic["fai"]," ",dic["fdash"]," ",dic["ai+1"]," ",dic["error"]," ")
-        return lis
+            #print(dic)
+        self.res= lis
 
-s = "600*x**4-550*x**3+200*x**2-20*x-1"
-start = 0.1
-end = 1
-iterations = 20
-error = 0.05/100
-fal = newton_raphson(s,start,iterations,error)

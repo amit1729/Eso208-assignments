@@ -8,6 +8,7 @@ class muller:
         self.x2 = x2
         self.itr = iterations
         self.err = error
+        self.res = []
         self.parse()
     
     def f(self,a):
@@ -15,7 +16,6 @@ class muller:
         return self.expr.subs(x,a)
     
     def calc(self,x0,x1,x2):
-        print(1)
         fx0 = self.f(x0)
         fx1 = self.f(x1)
         fx2 = self.f(x2)
@@ -27,7 +27,7 @@ class muller:
         a = (del1-del0)/(h1+h0)
         b = a*h1+del1
         c = fx2
-        d = sqrt(b*b-4*a*c)
+        d = abs(sqrt(b*b-4*a*c))
         if(b>0): x3 = x2+ (-2*c/(b+d))
         else: x3 = x2+(-2*c/(b-d))
         error = abs((x2-x3)/x3)
@@ -61,14 +61,7 @@ class muller:
             x2 = c["x3"]
             i+=1
             lis.append(c)
-            print(c)
-        return lis
+            #print(c)
+        self.res = lis
 
 
-s = "x**2-4*x+4"
-x0 = 0
-x1 = 0.5
-x2 = 1.0
-iterations = 20
-error = 0.05/100
-l = muller(s,x0,x1,x2,iterations,error)
