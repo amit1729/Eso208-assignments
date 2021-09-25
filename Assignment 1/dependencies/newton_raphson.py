@@ -27,7 +27,7 @@ class newton_raphson:
         dic["ai+1"] = anew
         dic["fdash"] = fda
         dic["fai"] = fa
-        dic["error"] = abs((anew-a)/anew)
+        dic["error"] = abs((anew-a)/anew)*100
         return dic
         
 

@@ -37,7 +37,7 @@ class muller:
             "h0":h0, "h1":h1,
             "a":a, "b":b, "c":c,
             "x3": x3,
-            "error": error
+            "error": error*100
         }
         if(x3==nan):
             dic["x3"] = x2

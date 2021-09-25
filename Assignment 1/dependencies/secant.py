@@ -23,7 +23,7 @@ class secant:
         dic["xk-1"] = a
         dic["xk"] = b
         dic["xk+1"] = m
-        dic["error"] = err
+        dic["error"] = err*100
         return dic
         #print(fa,fb,fm)
         

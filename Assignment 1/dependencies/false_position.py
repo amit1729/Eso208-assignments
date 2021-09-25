@@ -42,7 +42,7 @@ class false_position:
             error = abs((anew-bnew))
         else: return 1
         dic = {
-            "a":a, "b":b, "anew": anew, "bnew": bnew, "error": error
+            "a":a, "b":b, "anew": anew, "bnew": bnew, "error": error*100
         }
         return dic
         
@@ -53,7 +53,7 @@ class false_position:
         lis = []
         a = self.a
         b = self.b
-        err = abs(a-b)/2
+        err = abs(a-b)*100/2
         while(i<self.itr and ( i==1 or err>self.err)):
             c = self.calc(a,b)
             if(type(c)==int):

@@ -69,7 +69,7 @@ class modified_false_position:
                 error = abs((anew-bnew))
         else: return 1
         dic = {
-            "a":a, "b":b, "anew": anew, "bnew": bnew, "error": error, "ia":ia, "ib": ib
+            "a":a, "b":b, "anew": anew, "bnew": bnew, "error": error*100, "ia":ia, "ib": ib
         }
         return dic
         
@@ -81,7 +81,7 @@ class modified_false_position:
         lis = []
         a = self.a
         b = self.b
-        err = abs(a-b)/2
+        err = abs(a-b)*100/2
         while(i<self.itr and ( i==1 or err>self.err)):
             c = self.calc(a,b,ia,ib)
             if(type(c)==int):
