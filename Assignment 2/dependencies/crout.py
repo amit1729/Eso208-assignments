@@ -1,4 +1,4 @@
-import substitutions
+from dependencies import substitutions
 
 def crout(a):
     n = len(a)
@@ -22,6 +22,22 @@ def crout(a):
                 u[j][i] = (a[j][i]-sum1)/l[j][j]
         #print(u)
     
+    with open("outputs/outputs.txt",'w') as f:
+        f.write("\n")
+        f.write("L: ")
+        f.write("\n")
+        for i in range(n):
+            f.write(", ".join([str(j) for j in l[i]]))
+            f.write('\n')
+    
+    with open("outputs/outputs.txt",'a') as f:
+        f.write("\n")
+        f.write("U: ")
+        f.write("\n")
+        for i in range(n):
+            f.write(", ".join([str(j) for j in u[i]]))
+            f.write('\n')
+
     for i in range(n):
         l[i].append(a[i][n])
     y = substitutions.forward_substitution(l)
@@ -29,7 +45,12 @@ def crout(a):
     for i in range(n):
         u[i].append(y[i])
     x = substitutions.back_substitution(u)
+    
+    with open("outputs/outputs.txt",'a') as f:
+        f.write("\n")
+        f.write("X: ")
+        f.write("\n")
+        f.write("\n".join([str(j) for j in x]))
 
-mat = [[2,3,-1,5],[3,2,1,10],[1,-5,3,0]]
-crout(mat)
+
         

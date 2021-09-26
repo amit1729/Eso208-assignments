@@ -1,4 +1,4 @@
-import substitutions
+from dependencies import substitutions
 
 def cholesky(a):
     n = len(a)
@@ -22,16 +22,26 @@ def cholesky(a):
             temp= u[i][j]
             u[i][j] = u[j][i]
             u[j][i] = temp
-    print(l)
-    print(u)
+    
+    with open("outputs/outputs.txt",'w') as f:
+        f.write("\n")
+        f.write("L: ")
+        f.write("\n")
+        for i in range(n):
+            f.write(", ".join([str(j) for j in l[i]]))
+            f.write('\n')
+
     for i in range(n):
         l[i].append(a[i][n])
     y = substitutions.forward_substitution(l)
-    print(y)
+
     for i in range(n):
         u[i].append(y[i])
     x = substitutions.back_substitution(u)
-    print(x)
 
-mat = [[6,15,55,76],[15,55,225,295],[55,225,979,1259]]
-cholesky(mat)
+    with open("outputs/outputs.txt",'a') as f:
+        f.write("\n")
+        f.write("X: ")
+        f.write("\n")
+        f.write("\n".join([str(j) for j in x]))
+

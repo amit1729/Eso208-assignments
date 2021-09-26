@@ -1,5 +1,5 @@
 
-def scale(mat):
+def scale(mat,ts):
     mcpy = [i.copy() for i in mat]
     n = len(mat)
     for i in range(n):
@@ -23,5 +23,6 @@ def scale(mat):
         t = mcpy[i]
         mcpy[i] = mcpy[temp]
         mcpy[temp] = t
-    return mat
+    if(ts): return mcpy
+    else: return mat
 
