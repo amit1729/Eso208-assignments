@@ -1,5 +1,5 @@
 
-def scale(mat,ts):
+def scale(mat):
     mcpy = [i.copy() for i in mat]
     n = len(mat)
     for i in range(n):
@@ -9,20 +9,24 @@ def scale(mat,ts):
             max1 = max(abs(j),max1)
         for j in range(n1):
             mcpy[i][j] = mcpy[i][j]/max1
+    return mcpy
+
+"""def pivot(mat,ts,column):
+    mcpy = [i.copy() for i in mat]
+    n = len(mat)
     #print(mat)
-    for i in range(n):
-        temp = i
-        max1 = mcpy[i][i]
-        for j in range(i,n,1):
-            if(abs(max1)<abs(mcpy[j][i])):
-                temp = j
-                max1 = mcpy[j][i]
-        t = mat[i]
-        mat[i] = mat[temp]
-        mat[temp] = t
-        t = mcpy[i]
-        mcpy[i] = mcpy[temp]
-        mcpy[temp] = t
-    if(ts): return mcpy
-    else: return mat
+    temp = column
+    max1 = mcpy[column][column]
+    for j in range(column,n,1):
+        if(abs(max1)<abs(mcpy[j][column])):
+            temp = j
+            max1 = mcpy[j][column]
+    t = mat[column]
+    mat[column] = mat[temp]
+    mat[temp] = t
+    t = mcpy[column]
+    mcpy[column] = mcpy[temp]
+    mcpy[temp] = t
+    if(ts): return mcpy, temp
+    else: return mat, temp"""
 
