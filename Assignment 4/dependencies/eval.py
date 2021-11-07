@@ -11,5 +11,5 @@ def eval(exprs, lis):
             if(a>=expr[1][0] and a <=expr[1][1]):
                 temp = float(expr[0].subs(x,a))
                 ans.append(temp)
-    print(ans)
+    #print(ans)
     return ans

@@ -35,14 +35,14 @@ def quadratic_spline(pts):
     #coeff[0] = 0
     a = np.array([0])
     coeff = np.concatenate((a,coeff))
-    print(A)
-    print(V)
-    print(coeff)
+    #print(A)
+    #print(V)
+    #print(coeff)
     exprs = []
     x = symbols('x')
     for i in range(1,n,1):
         expr = coeff[3*(i-1)]*x**2 + coeff[3*(i-1)+1]*x + coeff[3*(i-1)+2]
         ra = (pts[i-1][0],pts[i][0])
-        exprs.append((expr,ra))
+        exprs.append([expr,ra])
     return exprs
 

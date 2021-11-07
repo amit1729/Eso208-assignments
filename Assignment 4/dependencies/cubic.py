@@ -43,7 +43,7 @@ def sigmas(pts, not_a_knot = False, periodic = False, clamped = False, alpha =0,
         A[i][i] = 2*(pts[i+1][2]+pts[i][2])
         V[i] = 6*(pts[i+1][3]-pts[i][3])
     sig = np.linalg.solve(A,V)
-    print(sig)
+    #print(sig)
     return (pts,sig)
 
 def cubic_spline(pts, not_a_knot = False, periodic = False, clamped = False, alpha =0,beta =0):
@@ -60,5 +60,5 @@ def cubic_spline(pts, not_a_knot = False, periodic = False, clamped = False, alp
         expr = A*(x-pts[i-1][0])**3 - B*(x-pts[i][0])**3 + C*(x-pts[i-1][0])-D*(x-pts[i][0])
         ra = (pts[i-1][0],pts[i][0])
         #print(expr)
-        exprs.append((expr,ra))
+        exprs.append([expr,ra])
     return exprs
