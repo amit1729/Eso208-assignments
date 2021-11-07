@@ -1,11 +1,14 @@
 
-QR Method
+Direct Power Method
 
-Eigenvalues:
-10.778835337688509
-8.146223454596328
-3.074941207715167
+Eigenvalue:
+10.77867204584454
+
+Eigenvector:
+-0.2674848174069731
+-0.2556248906747535
+1.0
 
 Iterations:
-23
+30
 
